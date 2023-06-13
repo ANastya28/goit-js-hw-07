@@ -38,11 +38,6 @@ function onImgContainerClick(event) {
     
     const instance = basicLightbox.create(`
         <img src="${selectedImage}" width="800" height="600">`,
-    
-        {
-            onShow: () => document.addEventListener('keydown', onEscapePress),
-            onClose: () => document.removeEventListener('keydown', onEscapePress),
-        }
     );
     
     instance.show();
