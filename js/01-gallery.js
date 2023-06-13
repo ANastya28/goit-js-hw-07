@@ -25,6 +25,7 @@ function makeHtmlGallary(galleryItems) {
    }).join("");
 }
 
+
 function onImgContainerClick(event) {
     event.preventDefault();
 
@@ -51,8 +52,9 @@ function onImgContainerClick(event) {
             instance.close();
         }
     };
-    
+
 }
+
 
 //   const instance = basicLightbox.create(`
 //     <h1>Dynamic Content</h1>
