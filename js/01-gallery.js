@@ -8,14 +8,14 @@ const createGallary = makeHtmlGallary(galleryItems);
 
 galleryList.insertAdjacentHTML("beforeend", createGallary);
 
-galleryList.addEventListener(`click`, onImgContainerClick)
+galleryList.addEventListener(`click`, onImgContainerClick);
 
 function makeHtmlGallary(galleryItems) {
     return galleryItems.map(({ preview, original, description }) => {
         return `<li class="gallery__item">
                    <a class="gallery__link" href="${original}">
                       <img
-                       class="${preview}"
+                       class="gallery__image"
                        src="${preview}"
                        data-source="${original}"
                        alt="${description}"
@@ -33,10 +33,10 @@ function onImgContainerClick(event) {
     };
 
     const selectedImage = event.target.getAttribute('data-source');
-
+    
     const instance = basicLightbox.create(`
     <img src="${selectedImage}" width="800" height="600">
-`);
+    `);
     
     instance.show()
     
@@ -47,6 +47,20 @@ function onImgContainerClick(event) {
 	})
     
 };
+
+
+//   const instance = basicLightbox.create(`
+//     <h1>Dynamic Content</h1>
+//     <p>You can set the content of the lightbox with JS.</p>
+// `)
+// console.log(instance);
+
+    
+// const result = _.add(2, 3);
+// console.log(result); 
+
+
+// ..................................................................................................................
 
 
 // const gallery = document.querySelector('.gallery')
