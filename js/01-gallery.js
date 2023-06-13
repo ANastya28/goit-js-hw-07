@@ -1,7 +1,7 @@
 import { galleryItems } from './gallery-items.js';
 // Change code below this line
 
-console.log(galleryItems);
+// console.log(galleryItems);
 
 const galleryList = document.querySelector(`.gallery`);
 const createGallary = makeHtmlGallary(galleryItems);
@@ -33,6 +33,7 @@ function onImgContainerClick(event) {
     };
 
     const selectedImage = event.target.getAttribute('data-source');
+    // console.log(selectedImage);
     
     const instance = basicLightbox.create(`
     <img src="${selectedImage}" width="800" height="600">
@@ -40,12 +41,14 @@ function onImgContainerClick(event) {
     
     instance.show()
     
-    galleryList.addEventListener('keydown', event => {
+    document.addEventListener('keydown', event => {
 		if (event.key === 'Escape') {
 			instance.close()
 		}
-	})
+    })
     
+    // onShow: (instance) => { },
+    // onClose: (instance) => {}
 };
 
 

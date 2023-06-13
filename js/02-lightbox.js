@@ -21,16 +21,6 @@ const gallery = galleryItems.map(makeHtmlGallary).join("");
 const galleryList = document.querySelector(`.gallery`);
 galleryList.insertAdjacentHTML("beforeend", gallery);
 
-galleryList.addEventListener(`click`, onImgContainerClick);
-  
-function onImgContainerClick(event) {
-    event.preventDefault();
+const lightbox = new SimpleLightbox('.gallery a', {captionDelay: 250, captionsData: 'alt' });
+//    // console.log(lightbox);
 
-    if (event.target.nodeName !== `IMG`) {
-        return;
-    };
-   
-   var lightbox = new SimpleLightbox('.gallery a', {captionDelay: 250, captionsData: 'alt' });
-   // console.log(lightbox);
-    
-};
