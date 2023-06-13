@@ -36,21 +36,23 @@ function onImgContainerClick(event) {
     // console.log(selectedImage);
     
     const instance = basicLightbox.create(`
-    <img src="${selectedImage}" width="800" height="600">
-    `);
+        <img src="${selectedImage}" width="800" height="600">`,
     
-    instance.show()
+        {
+            onShow: () => document.addEventListener('keydown', onEscapePress),
+            onClose: () => document.removeEventListener('keydown', onEscapePress),
+        }
+    );
     
-    document.addEventListener('keydown', event => {
-		if (event.key === 'Escape') {
-			instance.close()
-		}
-    })
-    
-    // onShow: (instance) => { },
-    // onClose: (instance) => {}
-};
+    instance.show();
 
+    function onEscapePress(event) {
+        if (event.key === 'Escape') {
+            instance.close();
+        }
+    };
+    
+}
 
 //   const instance = basicLightbox.create(`
 //     <h1>Dynamic Content</h1>
