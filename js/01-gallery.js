@@ -37,12 +37,14 @@ function onImgContainerClick(event) {
     // console.log(selectedImage);
     
     const instance = basicLightbox.create(`
-    <img src="${selectedImage}" width="800" height="600">`);
+    <img src="${selectedImage}" width="800" height="600">`,
+        {
+        onShow: (instance) => {document.addEventListener(`keydown`, onEscapePress)},
+        onClose: (instance) => {document.removeEventListener(`keydown`, onEscapePress)}
+        }
+    );
     
     instance.show();
-
-    onShow: (instance) => {document.addEventListener(`keydown`)},
-    onClose: (instance) => {document.removeEventListener(`keydown`, onEscapePress)}
     
     function onEscapePress(event) {
         if (event.key === 'Escape') {
@@ -89,13 +91,13 @@ function onImgContainerClick(event) {
 
 // gallery.append(...items)
 
-// gallery.addEventListener('click', e => {
-//     e.preventDefault();
-//     if (e.target.nodeName !== 'IMG') {
+// gallery.addEventListener('click', event => {
+//     event.preventDefault();
+//     if (event.target.nodeName !== 'IMG') {
 // 		return
 // 	}
 
-//     const selectedImage = e.target.getAttribute('data-source')
+//     const selectedImage = event.target.getAttribute('data-source')
 
 //     const instance = basicLightbox.create(`
 //     <img src="${selectedImage}" width="800" height="600">
@@ -103,8 +105,8 @@ function onImgContainerClick(event) {
 
 //     instance.show()
     
-//     gallery.addEventListener('keydown', e => {
-// 		if (e.key === 'Escape') {
+//     gallery.addEventListener('keydown', event => {
+// 		if (event.key === 'Escape') {
 // 			instance.close()
 // 		}
 // 	})
